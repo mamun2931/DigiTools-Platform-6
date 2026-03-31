@@ -31,6 +31,7 @@ function App() {
                 <Rating />
 
           <div>
+            {/* Pass selectedProducts, setSelectedProducts, selected, and setSelected as props to Products */}
             <Products 
               data={data} 
               selectedProducts={selectedProducts} 
