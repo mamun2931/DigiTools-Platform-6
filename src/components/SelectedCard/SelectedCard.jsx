@@ -2,12 +2,13 @@ import React from 'react';
 import {  User } from 'lucide-react';
 import { BiSolidTrash } from 'react-icons/bi';
 import { toast } from 'react-toastify';
+import SelectedCard_2 from './SelectedCard_2';
 
 const SelectedCard = ({ selectedProducts, setSelectedProducts }) => {
 
     const handleDelete = (product) => {
-        const remaining = selectedProducts.filter(p => p.id !== product.id);
-        setSelectedProducts(remaining);                
+        const cardRemaining = selectedProducts.filter(p => p.id !== product.id);
+        setSelectedProducts(cardRemaining);                
         toast.error(`${product.name} removed from cart`);
     };
 
@@ -19,11 +20,11 @@ const SelectedCard = ({ selectedProducts, setSelectedProducts }) => {
 
 
     return (
-        <div className='max-w-7xl mx-auto'>
+        <div className='max-w-7xl mx-auto mb-20'>
             {
                 selectedProducts.length === 0 ? (
                     <div className='text-center py-20 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200'>
-                        <h1 className='text-3xl font-bold text-gray-400'>No products selected yet.</h1>
+                        <h1 className='text-3xl font-bold text-gray-400'>No products selected</h1>
                     </div>
                 ) : (
 
@@ -35,34 +36,7 @@ const SelectedCard = ({ selectedProducts, setSelectedProducts }) => {
 
                         {selectedProducts.map(product => (
 
-                            <div key={product.id} className='card bg-base-100 shadow-sm border border-gray-100 p-5       rounded-2xl'>
-                                <div className='flex justify-between items-center'>
-                                    <div className='flex items-center gap-4'>
-                                        <img
-                                            src={product.icon}
-                                            alt={product.name} 
-                                            className='w-10 h-10 object-cover rounded-lg bg-gray-100'
-                                        />
-
-                                        <div className='space-y-1'>
-                                            <h2 className='text-xl font-bold flex items-center gap-2'>
-                                                <User size={28} className="text-gray-400" /> {product.name}
-                                            </h2>
-                                            <p className='text-gray-500 font-medium'>Price: ${product.price}</p>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <button  onClick={()=>handleDelete(product)}
-                                            className='btn btn-ghost text-red-500 hover:bg-red-50 p-2 rounded-full'
-                                        >
-                                            <BiSolidTrash size={24}/>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                    
+                            <SelectedCard_2 key={product.id} product={product} handleDelete={handleDelete} />
 
                         ))}
                     </div>
