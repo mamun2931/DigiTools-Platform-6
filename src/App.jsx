@@ -28,6 +28,7 @@ function App() {
               <>
               {/* Render the Hero and Rating components */}
                 <Hero />
+                { /* Render the Rating component */}
                 <Rating />
 
           <div>
