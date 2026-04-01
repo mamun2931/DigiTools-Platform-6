@@ -22,17 +22,17 @@ function App() {
   return (
     <>
       <main>
-                {/* Pass selectedProducts and setSelectedProducts as props to NavBar */}
+  
             <NavBar selectedProducts={selectedProducts} />
 
               <>
-              {/* Render the Hero and Rating components */}
+            
                 <Hero />
-                { /* Render the Rating component */}
+          
                 <Rating />
 
           <div>
-            {/* Pass selectedProducts, setSelectedProducts, selected, and setSelected as props to Products */}
+    
             <Products 
               data={data} 
               selectedProducts={selectedProducts} 
