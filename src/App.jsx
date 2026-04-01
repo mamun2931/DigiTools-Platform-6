@@ -11,56 +11,54 @@ import Transparent from './components/Transparent/Transparent'
 import Workflow from './components/Workflow/Workflow'
 import SocialLinks from './components/SocialLinks/SocialLinks'
 
-const data = fetch('data.json').then(res => res.json())
-const Plans = fetch('PlanData.json').then(res => res.json())
- 
+const fetchData = async() =>{
+  const res = await fetch('data.json');
+  const data = await res.json();
+  return data;
+}
 
+const fetchPlans = async() =>{
+  const res = await fetch('PlanData.json');
+  const data = await res.json();
+  return data;
+} 
+   const Plans = fetchPlans();
+  const data = fetchData();
 function App() {
   const [selectedProducts, setSelectedProducts] = useState([]);
-  const [selected, setSelected] = useState("available"); 
+
 
   return (
     <>
       <main>
-  
+
             <NavBar selectedProducts={selectedProducts} />
 
-              <>
-            
                 <Hero />
-          
                 <Rating />
-
-          <div>
     
+            <Suspense fallback={<div className='flex justify-center items-center p-10'><span className="loading loading-spinner loading-lg "></span></div>}>
+                 
             <Products 
-              data={data} 
+              data={data}
               selectedProducts={selectedProducts} 
               setSelectedProducts={setSelectedProducts}
-              selected={selected}
-              setSelected={setSelected} 
             />
+            </Suspense>
 
-            
-            {selected === "available" && (
-              <>
                 <Steps />
-                <Suspense fallback={<span>Loading...</span>}>
+                <Suspense fallback={<div className='flex justify-center items-center p-10'><span className="loading loading-spinner loading-lg "></span></div> }>
                   <Transparent Plans={Plans} />
                 </Suspense>
+
+
+
+                
+                
                 <Workflow />
                 <SocialLinks />
-              </>
-            )}
-          </div>
-
-
-          </>
       </main>
 
-
-
-      
         
       <ToastContainer position="top-right" autoClose={3000}/>
     </>

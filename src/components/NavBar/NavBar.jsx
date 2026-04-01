@@ -11,7 +11,7 @@ const users = [
 const NavBar = ({ selectedProducts}) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const links = users.map(user => (
-        <li key={user.id} className='text-[white] md:text-[#101727] font-semibold'><a href={user.path}>{user.name}</a></li>
+        <li key={user.id} className='text-[white] md:text-[#101727] hover:text-[#4F39F6] md:hover:text-[#9514FA] font-semibold'><a href={user.path}>{user.name}</a></li>
     ))
     return (
         <div className='sticky top-0 z-100 bg-white'>

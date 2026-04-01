@@ -1,10 +1,11 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import PricingCard from './ProductsCard';
 import SelectedCard from '../SelectedCard/SelectedCard';
 
 
-const Products = ({ data, selectedProducts, setSelectedProducts, selected, setSelected }) => {
+const Products = ({ data, selectedProducts, setSelectedProducts }) => {
     const Data = use(data);
+     const [selected, setSelected] = useState("available");
 
     return (
         <div className='max-w-7xl mx-auto px-5'>
