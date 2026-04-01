@@ -47,7 +47,9 @@ const NavBar = ({ selectedProducts}) => {
                 <div className='flex items-center gap-5'> 
                     <div className='indicator'>
                         <div><TiShoppingCart className='text-2xl' /></div>
-                        <span className='text-[white] px-1 bg-red-500 rounded-lg badge-sm indicator-item'>{selectedProducts.length}</span>
+                        {selectedProducts.length > 0 && (
+                            <span className='text-[white] px-1 bg-red-500 rounded-lg badge-sm indicator-item'>{selectedProducts.length}</span>
+                        )}
                     </div>
                     <button><a href="">Login</a></button>
                     <button className='btn rounded-full text-white bg-gradient-to-r from-[#4F39F6] to-[#9514FA]'>Get Started</button>
